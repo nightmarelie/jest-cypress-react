@@ -1,12 +1,10 @@
 describe('anonymous calculator', () => {
   it('can make calculations', () => {
     cy.visit('/');
-    cy.contains(/^1$/).click();
-    cy.contains('+').click();
-    cy.contains(/^4$/).click();
-    cy.contains(/^=$/)
-      .click()
-      .get('[data-testid=total]')
-      .should('have.text', '5');
+    cy.findByText(/^1$/).click();
+    cy.findByText(/^\+$/).click();
+    cy.findByText(/^4$/).click();
+    cy.findByText(/^=$/).click();
+    cy.findByTestId(/total/i).should('have.text', '5');
   });
 });
